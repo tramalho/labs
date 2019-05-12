@@ -8,6 +8,7 @@ import com.tramalho.labs.data.infra.Result
 import com.tramalho.labs.data.repository.LocalRepository
 import com.tramalho.labs.data.repository.TwitterRepository
 import com.tramalho.labs.data.security.AppCredentials
+import com.tramalho.labs.domain.TwitterUseCase
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before

@@ -1,4 +1,4 @@
-package com.tramalho.labs
+package com.tramalho.labs.domain
 
 import com.tramalho.labs.data.entity.OAuthToken
 import com.tramalho.labs.data.entity.Tweet
