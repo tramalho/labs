@@ -1,6 +1,5 @@
 package com.tramalho.labs.data.infra
 
-import com.tramalho.labs.data.networkentities.Result
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals

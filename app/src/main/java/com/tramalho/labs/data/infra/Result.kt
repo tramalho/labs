@@ -1,4 +1,4 @@
-package com.tramalho.labs.data.networkentities
+package com.tramalho.labs.data.infra
 
 sealed class Result<out T: Any> {
     data class Success<out T : Any>(val data: T) : Result<T>()

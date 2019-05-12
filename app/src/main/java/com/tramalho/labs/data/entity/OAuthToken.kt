@@ -1,4 +1,4 @@
-package com.tramalho.labs.data.networkentities
+package com.tramalho.labs.data.entity
 
 import com.squareup.moshi.Json
 

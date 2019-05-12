@@ -1,11 +1,10 @@
 package com.tramalho.labs.data.infra
 
-import com.tramalho.labs.data.networkentities.Result
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 
 
-suspend fun <T : Any> call(block: () -> Deferred<Response<T>>):Result<T> {
+suspend fun <T : Any> call(block: () -> Deferred<Response<T>>): Result<T> {
     try {
 
         val response = block().await()
