@@ -2,7 +2,7 @@ package com.tramalho.labs.data.infra
 
 import retrofit2.Retrofit
 
-class ServiceFactory<T>(private val retrofit: Retrofit){
+class ServiceFactory(val retrofit: Retrofit){
 
-    fun create(clazz: Class<T>) = retrofit.create(clazz::class.java)
+    inline fun <reified T> create() : T = retrofit.create(T::class.java)
 }

@@ -1,13 +1,13 @@
 package com.tramalho.labs
 
-import com.tramalho.labs.data.entity.OAuthToken
 import com.tramalho.labs.data.entity.Tweet
 import com.tramalho.labs.data.entity.TweetRequest
 import com.tramalho.labs.data.infra.Constants.Companion.GRANT_TYPE
 import com.tramalho.labs.data.infra.Result
 import com.tramalho.labs.data.repository.LocalRepository
 import com.tramalho.labs.data.repository.TwitterRepository
-import com.tramalho.labs.data.security.AppCredentials
+import com.tramalho.labs.data.entity.AppCredentials
+import com.tramalho.labs.data.entity.OAuthToken
 import com.tramalho.labs.domain.TwitterUseCase
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
@@ -22,7 +22,7 @@ import java.lang.Error
 class TwitterUseCaseTest {
 
     private val nickname = "nick"
-    private val oAuthToken = OAuthToken("tokenType", "accessToken")
+    private val oAuthToken = OAuthToken("tokenType", "access_token")
     private val listTweet = listOf(Tweet(nickname, 1))
 
     @Mock
@@ -39,7 +39,7 @@ class TwitterUseCaseTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        `when`(appCredentials.authorizarion()).thenReturn(nickname)
+        `when`(appCredentials.authorization).thenReturn(nickname)
         twitterUseCase = TwitterUseCase(twitterRepository, localRepository, appCredentials)
     }
 

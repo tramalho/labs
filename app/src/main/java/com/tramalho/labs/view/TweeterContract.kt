@@ -8,5 +8,8 @@ interface TweeterContract {
         fun showLoading()
         fun receiveData(tweets: List<Tweet>)
         fun showError()
+        fun hideLoading()
+        fun showValidationError()
+        fun cleanValidationError()
     }
 }

@@ -1,13 +1,10 @@
 package com.tramalho.labs.domain
 
-import com.tramalho.labs.data.entity.OAuthToken
-import com.tramalho.labs.data.entity.Tweet
-import com.tramalho.labs.data.entity.TweetRequest
+import com.tramalho.labs.data.entity.*
 import com.tramalho.labs.data.infra.Constants.Companion.GRANT_TYPE
 import com.tramalho.labs.data.infra.Result
 import com.tramalho.labs.data.repository.LocalRepository
 import com.tramalho.labs.data.repository.TwitterRepository
-import com.tramalho.labs.data.security.AppCredentials
 
 class TwitterUseCase(
     private var twitterRepository: TwitterRepository,
@@ -34,7 +31,7 @@ class TwitterUseCase(
         if (accessToken.isNullOrEmpty()) {
 
             val tokenResult =
-                twitterRepository.retrieveToken(appCredential.authorizarion(), GRANT_TYPE)
+                twitterRepository.retrieveToken(appCredential.authorization, GRANT_TYPE)
 
             result = when (tokenResult) {
                 is Result.Success -> configOAuthToken(tokenResult.data)
@@ -63,6 +60,5 @@ class TwitterUseCase(
             is Result.Success -> Result.Success(result.data)
             is Result.Failure -> result
         }
-
     }
 }

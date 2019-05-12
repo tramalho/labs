@@ -9,5 +9,5 @@ val networkModule = module(override = true) {
 
     single { RetrofitFactory().build(get()) }
 
-    single { ServiceFactory<TwitterService>(get()).create(TwitterService::class.java) }
+    single { ServiceFactory(get()).create<TwitterService>() }
 }

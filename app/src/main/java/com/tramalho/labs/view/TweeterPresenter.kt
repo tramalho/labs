@@ -13,20 +13,35 @@ class TweeterPresenter(
     private val scope: CoroutineScope = UI
 ) {
 
-    private enum class States {LOADING, SUCCESS, ERROR}
+    private enum class States { VALIDATE, LOADING, SUCCESS, ERROR }
 
-    fun loadTweetsByNick(nick: String) {
+    fun loadTweetsByNick(nick: String?) {
         scope.launch {
-            configState(StateData(States.LOADING, nick = nick))
+            configState(StateData(States.VALIDATE, nick = nick))
         }
     }
 
     private suspend fun configState(stateData: StateData) {
 
-        when(stateData.states) {
-            States.LOADING -> retrieveData(stateData.nick)
+        when (stateData.states) {
+            States.VALIDATE -> verifyNick(stateData.nick)
+            States.LOADING -> retrieveData(stateData.nick ?: "")
             States.SUCCESS -> configSuccess(stateData)
-            else -> contractView.showError()
+            else -> configError()
+        }
+    }
+
+    private fun configError() {
+        contractView.cleanValidationError()
+        contractView.hideLoading()
+        contractView.showError()
+    }
+
+    private suspend fun verifyNick(nick: String?) {
+        contractView.hideLoading()
+        when {
+            nick.isNullOrEmpty() -> contractView.showValidationError()
+            else -> configState(StateData(States.LOADING, nick = nick))
         }
     }
 
@@ -35,14 +50,19 @@ class TweeterPresenter(
     }
 
     private suspend fun retrieveData(nick: String) {
+        contractView.cleanValidationError()
         contractView.showLoading()
         val result = useCase.getTweetersByNick(nick)
 
-        when(result) {
+        when (result) {
             is Result.Success -> configState(StateData(States.SUCCESS, tweets = result.data))
             is Result.Failure -> configState(StateData(States.ERROR))
         }
     }
 
-    private data class StateData(val states: States, val nick: String = "", val tweets: List<Tweet> = emptyList())
+    private data class StateData(
+        val states: States,
+        val nick: String? = "",
+        val tweets: List<Tweet> = emptyList()
+    )
 }

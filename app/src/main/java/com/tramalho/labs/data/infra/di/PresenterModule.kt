@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val presenterModule = module {
 
-    factory { (cv: TweeterContract.View) -> TweeterPresenter(cv, get(), get()) }
+    factory { (cv: TweeterContract.View) -> TweeterPresenter(cv, get()) }
 }

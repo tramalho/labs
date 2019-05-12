@@ -15,10 +15,11 @@ class RetrofitFactory {
     fun build(baseUrl: String): Retrofit {
         return Builder()
             .baseUrl(baseUrl)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(logInterceptor())
             .build()
+
     }
 
     private fun logInterceptor(): OkHttpClient {
