@@ -2,6 +2,7 @@ package com.tramalho.labs.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.tramalho.labs.R
 import com.tramalho.labs.data.entity.Tweet
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,20 +19,23 @@ class MainActivity : AppCompatActivity(), TweeterContract.View {
         setContentView(R.layout.activity_main)
 
         findTweets.setOnClickListener {
-            presenter.loadTweetsByNick(StringBuilder(findTweets.text).toString())
+            presenter.loadTweetsByNick(editText?.text.toString())
         }
     }
 
     override fun hideLoading() {
+        loadingVisibility(View.GONE)
     }
 
     override fun showValidationError() {
+        textInputLayout.error = getString(R.string.invalid_value)
     }
 
     override fun cleanValidationError() {
     }
 
     override fun showLoading() {
+        loadingVisibility(View.VISIBLE)
     }
 
     override fun receiveData(tweets: List<Tweet>) {
@@ -40,4 +44,10 @@ class MainActivity : AppCompatActivity(), TweeterContract.View {
     override fun showError() {
     }
 
+    private fun loadingVisibility(view: Int) {
+        progressBar1.visibility = view
+        findTweets.isEnabled = view == View.GONE
+        textInputLayout.isEnabled = view == View.GONE
+        textInputLayout.error = ""
+    }
 }

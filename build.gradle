@@ -8,6 +8,7 @@ buildscript {
     ext.koin_version = "2.0.0-GA"
     ext.gradlew_version = "3.3.0"
     ext.mockito_version = "2.27.0"
+    ext.coroutines_version = "1.0.1"
 
     repositories {
         google()

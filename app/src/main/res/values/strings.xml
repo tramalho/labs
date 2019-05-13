@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Labs</string>
-    <string name="find">find</string>
+    <string name="find">Buscar</string>
+    <string name="tweeter_ser_hint">Digite o seu usuário do twitter</string>
+    <string name="invalid_value">Texto Inválido</string>
 </resources>

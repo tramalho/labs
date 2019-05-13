@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import retrofit2.Response
 
-val UI = CoroutineScope(Dispatchers.Default + Job())
+val UI = CoroutineScope(Dispatchers.Main + Job())
 
 suspend fun <T : Any> call(block: () -> Deferred<Response<T>>): Result<T> {
     try {

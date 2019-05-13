@@ -38,7 +38,6 @@ class TweeterPresenter(
     }
 
     private suspend fun verifyNick(nick: String?) {
-        contractView.hideLoading()
         when {
             nick.isNullOrEmpty() -> contractView.showValidationError()
             else -> configState(StateData(States.LOADING, nick = nick))
@@ -46,6 +45,7 @@ class TweeterPresenter(
     }
 
     private fun configSuccess(stateData: StateData) {
+        contractView.hideLoading()
         contractView.receiveData(stateData.tweets)
     }
 
