@@ -8,5 +8,7 @@ class Constants {
         const val PREF_KEY = "PREF_KEY"
         val AUTH_SUFFIX = "Basic"
         val TOKEN_SUFFIX = "Bearer"
+        val DEFAULT_LANGUAGE = "pt"
+        val PLAN_TEXT = "PLAN_TEXT"
     }
 }

@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.MainActivity"
+        <activity
+            android:name=".view.TweeterListActivity"
+            android:label="@string/title_activity_tweeter_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.FormTweetActivity"
             android:theme="@style/SearchTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

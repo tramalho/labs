@@ -9,7 +9,7 @@ import org.koin.dsl.module
 
 val systemModule = module {
 
-    single { AppCredentials(BuildConfig.AUTHORIZARION) }
+    single { AppCredentials(BuildConfig.AUTHORIZARION, BuildConfig.GCP_API_KEY) }
 
     factory { androidContext().getSharedPreferences(Constants.PREF_KEY, Context.MODE_PRIVATE) }
 }

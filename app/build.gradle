@@ -26,6 +26,7 @@ android {
         //set value in ~/.gradle/gradle.properties or create variables with value here
         buildTypes.each  {
             it.buildConfigField 'String', 'AUTHORIZARION', authorizationKey
+            it.buildConfigField 'String', 'GCP_API_KEY', gcpApiKey
         }
     }
 }

@@ -7,8 +7,8 @@ import com.tramalho.labs.domain.TwitterUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-class TweeterPresenter(
-    private val contractView: TweeterContract.View,
+class FormTweetPresenter(
+    private val contract: TweeterContract.FormView,
     private val useCase: TwitterUseCase,
     private val scope: CoroutineScope = UI
 ) {
@@ -32,26 +32,26 @@ class TweeterPresenter(
     }
 
     private fun configError() {
-        contractView.cleanValidationError()
-        contractView.hideLoading()
-        contractView.showError()
+        contract.cleanValidationError()
+        contract.hideLoading()
+        contract.showError()
     }
 
     private suspend fun verifyNick(nick: String?) {
         when {
-            nick.isNullOrEmpty() -> contractView.showValidationError()
+            nick.isNullOrEmpty() -> contract.showValidationError()
             else -> configState(StateData(States.LOADING, nick = nick))
         }
     }
 
     private fun configSuccess(stateData: StateData) {
-        contractView.hideLoading()
-        contractView.receiveData(stateData.tweets)
+        contract.hideLoading()
+        contract.receiveData(stateData.tweets)
     }
 
     private suspend fun retrieveData(nick: String) {
-        contractView.cleanValidationError()
-        contractView.showLoading()
+        contract.cleanValidationError()
+        contract.showLoading()
         val result = useCase.getTweetersByNick(nick)
 
         when (result) {

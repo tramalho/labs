@@ -4,8 +4,7 @@ import com.tramalho.labs.data.entity.Tweet
 import com.tramalho.labs.data.infra.Constants
 import com.tramalho.labs.data.infra.Result
 import com.tramalho.labs.domain.TwitterUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.tramalho.labs.utilities.TestUI
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -13,22 +12,22 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 
-class TweeterPresenterTest {
+class FormTweetPresenterTest {
 
     private val tweets = listOf(Tweet(Constants.GRANT_TYPE, 1))
 
     @Mock
-    private lateinit var view: TweeterContract.View
+    private lateinit var formView: TweeterContract.FormView
 
     @Mock
     private lateinit var useCase: TwitterUseCase
 
-    private lateinit var presenter: TweeterPresenter
+    private lateinit var presenter: FormTweetPresenter
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = TweeterPresenter(view, useCase, CoroutineScope(Dispatchers.Unconfined))
+        presenter = FormTweetPresenter(formView, useCase, TestUI)
     }
 
     @Test
@@ -40,8 +39,8 @@ class TweeterPresenterTest {
 
         presenter.loadTweetsByNick(Constants.GRANT_TYPE)
 
-        verify(view).showLoading()
-        verify(view).receiveData(tweets)
+        verify(formView).showLoading()
+        verify(formView).receiveData(tweets)
     }
 
 
@@ -52,9 +51,9 @@ class TweeterPresenterTest {
 
         presenter.loadTweetsByNick(Constants.GRANT_TYPE)
 
-        verify(view).showLoading()
-        verify(view, never()).receiveData(tweets)
-        verify(view).showError()
+        verify(formView).showLoading()
+        verify(formView, never()).receiveData(tweets)
+        verify(formView).showError()
     }
 
 }
