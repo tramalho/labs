@@ -5,7 +5,7 @@ import com.tramalho.labs.data.infra.Constants
 data class AnalizeSentimentRequest(val document: Document)
 
 data class Document(
-    val type: String = Constants.PLAN_TEXT,
+    val type: String = Constants.PLAIN_TEXT,
     val language: String = Constants.DEFAULT_LANGUAGE,
     val content: String
 )

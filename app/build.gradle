@@ -13,6 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         debug {
@@ -28,6 +30,10 @@ android {
             it.buildConfigField 'String', 'AUTHORIZARION', authorizationKey
             it.buildConfigField 'String', 'GCP_API_KEY', gcpApiKey
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 

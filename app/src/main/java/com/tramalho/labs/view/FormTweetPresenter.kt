@@ -32,7 +32,6 @@ class FormTweetPresenter(
     }
 
     private fun configError() {
-        contract.cleanValidationError()
         contract.hideLoading()
         contract.showError()
     }
@@ -50,7 +49,6 @@ class FormTweetPresenter(
     }
 
     private suspend fun retrieveData(nick: String) {
-        contract.cleanValidationError()
         contract.showLoading()
         val result = useCase.getTweetersByNick(nick)
 
@@ -63,6 +61,6 @@ class FormTweetPresenter(
     private data class StateData(
         val states: States,
         val nick: String? = "",
-        val tweets: List<Tweet> = emptyList()
+        val tweets: ArrayList<Tweet> = ArrayList()
     )
 }

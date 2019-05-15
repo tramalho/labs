@@ -12,9 +12,8 @@ interface TweeterContract {
     }
 
     interface FormView : BaseView {
-        fun receiveData(tweets: List<Tweet>)
+        fun receiveData(tweets: ArrayList<Tweet>)
         fun showValidationError()
-        fun cleanValidationError()
     }
 
     interface ListView : BaseView {

@@ -9,6 +9,12 @@ class Constants {
         val AUTH_SUFFIX = "Basic"
         val TOKEN_SUFFIX = "Bearer"
         val DEFAULT_LANGUAGE = "pt"
-        val PLAN_TEXT = "PLAN_TEXT"
+        val PLAIN_TEXT = "PLAIN_TEXT"
+        val TWEETER_ENDPOINT = "https://api.twitter.com/"
+        val GOOGLE_ENDPOINT = "https://language.googleapis.com/"
+        val TWEETER_LIST_EXTRA = "TWEETER_LIST_EXTRA"
+
+        val TWEETER_NT = "TWEETER_NT"
+        val GOOGLE_NT = "GOOGLE_NT"
     }
 }

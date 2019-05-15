@@ -10,11 +10,11 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitFactory {
 
-    private val timeout: Long = 5
+    private val timeout: Long = 15
 
-    fun build(baseUrl: String): Retrofit {
+    fun build(baseUrl: StringBuilder): Retrofit {
         return Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(baseUrl.toString())
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(logInterceptor())

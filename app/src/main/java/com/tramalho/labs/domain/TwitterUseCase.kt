@@ -12,11 +12,11 @@ class TwitterUseCase(
     private val appCredential: AppCredentials
 ) {
 
-    suspend fun getTweetersByNick(nick: String): Result<List<Tweet>> {
+    suspend fun getTweetersByNick(nick: String): Result<ArrayList<Tweet>> {
 
         val resultToken = resolveToken()
 
-        return when (resultToken) {
+         return when (resultToken) {
             is Result.Success -> retrieveTweets(resultToken.data, nick)
             is Result.Failure -> resultToken
         }
@@ -51,13 +51,13 @@ class TwitterUseCase(
         return Result.Success(data.accessToken)
     }
 
-    private suspend fun retrieveTweets(bearerToken: String, nick: String): Result<List<Tweet>> {
+    private suspend fun retrieveTweets(bearerToken: String, nick: String): Result<ArrayList<Tweet>> {
 
         val request = TweetRequest(bearerToken, nick)
         val result = twitterRepository.retrieveTweetsByNick(request)
 
         return when (result) {
-            is Result.Success -> Result.Success(result.data)
+            is Result.Success -> Result.Success(ArrayList(result.data))
             is Result.Failure -> result
         }
     }

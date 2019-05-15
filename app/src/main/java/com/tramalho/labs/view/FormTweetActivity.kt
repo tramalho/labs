@@ -1,10 +1,13 @@
 package com.tramalho.labs.view
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.tramalho.labs.R
 import com.tramalho.labs.data.entity.Tweet
+import com.tramalho.labs.data.infra.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -30,17 +33,18 @@ class FormTweetActivity : AppCompatActivity(), TweeterContract.FormView {
         textInputLayout.error = getString(R.string.invalid_value)
     }
 
-    override fun cleanValidationError() {
-    }
-
     override fun showLoading() {
         loadingVisibility(View.VISIBLE)
     }
 
-    override fun receiveData(tweets: List<Tweet>) {
+    override fun receiveData(tweets: ArrayList<Tweet>) {
+        val intent = Intent(this, TweeterListActivity::class.java)
+        intent.putExtra(Constants.TWEETER_LIST_EXTRA, tweets)
+        startActivity(intent)
     }
 
     override fun showError() {
+        showToastError(R.string.something_wrong)
     }
 
     private fun loadingVisibility(view: Int) {
