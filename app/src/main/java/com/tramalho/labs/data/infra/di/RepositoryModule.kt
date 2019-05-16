@@ -3,7 +3,7 @@ package com.tramalho.labs.data.infra.di
 import com.tramalho.labs.data.repository.GoogleRepository
 import com.tramalho.labs.data.repository.LocalRepository
 import com.tramalho.labs.data.repository.TwitterRepository
-import org.koin.dsl.module
+import org.koin.dsl.module.module
 
 val repositoryModule = module {
 

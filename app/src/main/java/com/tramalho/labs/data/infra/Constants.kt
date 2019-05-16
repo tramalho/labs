@@ -16,5 +16,6 @@ class Constants {
 
         val TWEETER_NT = "TWEETER_NT"
         val GOOGLE_NT = "GOOGLE_NT"
+        val MOCK_URL = "http://localhost:51384"
     }
 }
