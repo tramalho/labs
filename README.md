@@ -21,13 +21,11 @@ Obs.: Alternativamente as chaves podem ser adicionadas ao arquivo [build.gradle]
 
 MVP + Clean Architecture, referência: https://github.com/dmytrodanylyk/android-architecture
 
-O uso do Presenter permite que as lógicas relacionadas a apresentação dos dados sejam testáveis ao mesmo tempo que diminui a quantidade de código criada nas views
+O Presenter fica responsável pelas lógicas de apresentação, tornando a view passiva
 
-O UseCase permite mapear quaisquers lógicas de negócio além de coordenar a obtençã
-o dos dados
+O UseCase permite mapear quaisquers lógicas de negócio além de coordenar as chamadas aos Repositórios
 
-Por fim o Repositório fica responsável pela obtençã
-o dos dados
+Por fim o Repositório atua como um datasource sendo o responsável pela obtenção dos dados
 
 A separação acima favorece a testabilidade e a reutilização de código
 
